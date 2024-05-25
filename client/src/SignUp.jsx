@@ -44,7 +44,7 @@ const SignUp = () => {
     }
   };
   if (isSubmitted) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/" />;
   }
 
   return (

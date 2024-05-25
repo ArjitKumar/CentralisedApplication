@@ -34,6 +34,8 @@ import Login from "./Login";
 import Dashboard from "./components/Dashboard";
 import Layout from "./Layout"; // The layout component
 import Employee from "./components/Employee";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import AdminPanel from "./components/Admin/AdminPanel";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -54,6 +56,10 @@ const App = () => {
     {
       path: "login", // Child route
       element: <Login />, // Rendered inside the <Outlet />
+    },
+    {
+      path: "/admin-dashboard",
+      element: <AdminPanel />,
     },
   ]);
 
