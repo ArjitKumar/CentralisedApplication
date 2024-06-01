@@ -31,11 +31,11 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUp from "./SignUp";
 import Login from "./Login";
-import Dashboard from "./components/Dashboard";
 import Layout from "./Layout"; // The layout component
-import Employee from "./components/Employee";
-import AdminDashboard from "./components/Admin/AdminDashboard";
 import AdminPanel from "./components/Admin/AdminPanel";
+import UpdateUser from "./components/UpdateUserDetails.jsx/UpdateUser";
+import ProjectForm from "./components/UpdateUserDetails.jsx/ProjectForm";
+import ProjectList from "./components/UpdateUserDetails.jsx/ProjectList";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -60,6 +60,18 @@ const App = () => {
     {
       path: "/admin-dashboard",
       element: <AdminPanel />,
+    },
+    {
+      path: "/update",
+      element: <UpdateUser />,
+    },
+    {
+      path: "/project",
+      element: <ProjectForm />,
+    },
+    {
+      path: "/projectlist",
+      element: <ProjectList />,
     },
   ]);
 

@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Project from "./components/Project";
 import Employee from "./components/Employee";
+import ProjectList from "./components/UpdateUserDetails.jsx/ProjectList";
 
 const Layout = () => {
   return (
@@ -27,7 +28,7 @@ const Layout = () => {
         <Dashboard />
         {/* <main className="flex-1 p-4 ml-64 bg-gradient-to-r from-neutral-100 to-slate-300"> */}
         <main className="flex-1 p-4 ml-64 bg-slate-300">
-          <Employee />
+          <ProjectList />
           {/* Add more cards or components here */}
         </main>
         <Outlet />
