@@ -1,0 +1,71 @@
+.member {
+  position: relative;
+}
+
+.role-group {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 20px; /* Adjust spacing between levels */
+}
+
+.role-group::before {
+  content: "";
+  position: absolute;
+  top: -20px; /* Adjusted position of vertical line */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 60px; /* Increased length of vertical line */
+  background-color: black;
+}
+
+/* Ensure horizontal lines between nodes are centered */
+.role-group .member:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 30px; /* Length of the horizontal line for centering */
+  height: 2px;
+  background-color: black;
+}
+
+.role-group .member + .member::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px; /* Offset to center the horizontal line */
+  width: 30px;
+  height: 2px;
+  background-color: black;
+}
+
+.manager-container {
+  position: relative;
+}
+
+.manager-container::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 40px; /* Length of the vertical line */
+  background-color: black;
+}
+
+/* Remove unnecessary horizontal line after the manager */
+.manager-container .member::after {
+  display: none;
+}
+
+.role-group .member:first-child::before {
+  display: none;
+}
+
+/* Remove vertical line after the last level nodes */
+.role-group:last-child::before {
+  display: none;
+}

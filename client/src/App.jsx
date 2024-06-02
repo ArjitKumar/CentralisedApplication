@@ -33,37 +33,43 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 import Layout from "./Layout"; // The layout component
 import AdminPanel from "./components/Admin/AdminPanel";
-import UpdateUser from "./components/UpdateUserDetails.jsx/UpdateUser";
-import ProjectForm from "./components/UpdateUserDetails.jsx/ProjectForm";
-import ProjectList from "./components/UpdateUserDetails.jsx/ProjectList";
+import UpdateUser from "./components/UpdateUserDetails/UpdateUser";
+import ProjectForm from "./components/UpdateUserDetails/ProjectForm";
+import ProjectList from "./components/UpdateUserDetails/ProjectList";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { useNavigate } from "react-router-dom";
+import CreateProject from "./components/Admin/CreateProject";
+import ProjectD from "./components/ProjectHeirarchy/ProjectD";
 
 const App = () => {
   const router = createBrowserRouter([
     {
+      path: "/user-dashboard",
+      element: (
+        <PrivateRoute>
+          <Layout />
+        </PrivateRoute>
+      ),
+    },
+    {
       path: "/",
-      element: <Layout />, // Parent route renders the layout
-      children: [
-        // {
-        //   path: "dashboard", // Child route
-        //   element: <Dashboard />, // Rendered inside the <Outlet />
-        // },
-      ],
+      element: <SignUp />,
     },
     {
-      path: "/signup", // Child route
-      element: <SignUp />, // Rendered inside the <Outlet />
-    },
-    {
-      path: "login", // Child route
-      element: <Login />, // Rendered inside the <Outlet />
+      path: "/login",
+      element: <Login />,
     },
     {
       path: "/admin-dashboard",
-      element: <AdminPanel />,
+      element: (
+        <PrivateRoute requiredRole="Technical Manager">
+          <AdminPanel />
+        </PrivateRoute>
+      ),
     },
     {
       path: "/update",
-      element: <UpdateUser />,
+      element: <CreateProject />,
     },
     {
       path: "/project",
@@ -72,6 +78,18 @@ const App = () => {
     {
       path: "/projectlist",
       element: <ProjectList />,
+    },
+    {
+      path: "/ph",
+      element: <ProjectD />,
+    },
+    {
+      path: "/create-project",
+      element: (
+        <PrivateRoute requiredRole="Technical Manager">
+          <CreateProject />
+        </PrivateRoute>
+      ),
     },
   ]);
 
