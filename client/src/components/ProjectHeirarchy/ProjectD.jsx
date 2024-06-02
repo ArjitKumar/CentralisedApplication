@@ -8,7 +8,7 @@ const ProjectD = ({ projectId }) => {
     const fetchProjectDetails = async () => {
       try {
         const response = await fetch(
-          `https://localhost:7221/api/Project/user/D633EDF7-4B71-4043-8A7B-08DC8308F745`
+          `https://localhost:7221/api/Project/user/F131EA52-2951-4FEF-953B-08DC821D59F5`
         );
         if (!response.ok) {
           throw new Error(
