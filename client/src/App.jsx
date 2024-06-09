@@ -40,6 +40,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { useNavigate } from "react-router-dom";
 import CreateProject from "./components/Admin/CreateProject";
 import ProjectD from "./components/ProjectHeirarchy/ProjectD";
+import UpdateProject from "./components/Admin/UpdateProject";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -88,6 +89,14 @@ const App = () => {
       element: (
         <PrivateRoute requiredRole="Technical Manager">
           <CreateProject />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: "/update-project/:projectId",
+      element: (
+        <PrivateRoute requiredRole="Technical Manager">
+          <UpdateProject />
         </PrivateRoute>
       ),
     },

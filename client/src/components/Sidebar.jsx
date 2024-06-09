@@ -16,7 +16,7 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-gray-800 fixed h-full px-4 py-2">
       <div className=" my-2 mb-4">
-        <h1 className=" text-2x text-white font-bold"> User Dashboard </h1>
+        <h1 className=" text-xl text-white font-bold"> User Dashboard </h1>
       </div>
       {/* <hr /> */}
       <hr class=" w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded"></hr>

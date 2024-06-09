@@ -14,7 +14,7 @@ const AdminPanel = () => {
       <AdminSidebar />
       <div className="flex-1 flex flex-col">
         <AdminNavBar onSearch={handleSearch} />
-        <main className="flex-1 p-4 ml-64 bg-slate-300">
+        <main className="flex-1 p-4 ml-64 bg-gradient-to-r from-zinc-50 to-zinc-300 ...">
           <AdminProject searchTerm={searchTerm} />
         </main>
       </div>
