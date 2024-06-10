@@ -1,16 +1,36 @@
-// // export default Login;
 // import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
+// import { useNavigate, Link } from "react-router-dom";
 // import "./components/Login.css";
 
 // const Login = () => {
 //   const [username, setUsername] = useState("");
 //   const [password, setPassword] = useState("");
+//   const [errors, setErrors] = useState({});
 //   const [error, setError] = useState("");
 //   const navigate = useNavigate();
 
+//   const validateForm = () => {
+//     const newErrors = {};
+
+//     if (!username) {
+//       newErrors.username = "Username is required";
+//     }
+
+//     if (!password) {
+//       newErrors.password = "Password is required";
+//     } else if (password.length < 8) {
+//       newErrors.password = "Password must be at least 8 characters long";
+//     }
+
+//     setErrors(newErrors);
+//     return Object.keys(newErrors).length === 0;
+//   };
+
 //   const handleLogin = async () => {
+//     if (!validateForm()) {
+//       return;
+//     }
+
 //     try {
 //       const response = await fetch(
 //         "https://localhost:7221/api/Employee/login",
@@ -23,11 +43,10 @@
 
 //       if (response.ok) {
 //         const data = await response.json();
-//         const { message, role, id } = data; // Extract userId from response
-//         console.log(id);
+//         const { message, role, id } = data;
 
 //         if (message === "Login successful") {
-//           sessionStorage.setItem("userId", id); // Store userId in session storage
+//           sessionStorage.setItem("userId", id);
 //           sessionStorage.setItem("userRole", role);
 //           sessionStorage.setItem("isAuthenticated", "true");
 
@@ -78,6 +97,9 @@
 //               placeholder="Enter your username"
 //               required
 //             />
+//             {errors.username && (
+//               <p className="text-red-500 text-sm">{errors.username}</p>
+//             )}
 //           </div>
 //           <div className="mb-6">
 //             <label
@@ -88,13 +110,16 @@
 //             </label>
 //             <input
 //               type="password"
-//               id="password"
+//               id="password123"
 //               value={password}
 //               onChange={(e) => setPassword(e.target.value)}
 //               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
 //               placeholder="Enter your password"
 //               required
 //             />
+//             {errors.password && (
+//               <p className="text-red-500 text-sm">{errors.password}</p>
+//             )}
 //           </div>
 //           <div className="flex justify-between items-center">
 //             <button
@@ -116,9 +141,10 @@
 // };
 
 // export default Login;
-
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./components/Login.css";
 
 const Login = () => {
@@ -162,31 +188,67 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        const { message, role, id } = data;
+        const { message, role, id, name } = data;
 
         if (message === "Login successful") {
           sessionStorage.setItem("userId", id);
           sessionStorage.setItem("userRole", role);
           sessionStorage.setItem("isAuthenticated", "true");
 
-          if (role === "Technical Manager") {
-            navigate("/admin-dashboard");
-          } else {
-            navigate("/user-dashboard");
-          }
+          toast.success(`Welcome, ${name}!`, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          setTimeout(() => {
+            if (role === "Technical Manager") {
+              navigate("/admin-dashboard");
+            } else {
+              navigate("/user-dashboard");
+            }
+          }, 3000);
         } else {
-          setError("Login failed");
+          toast.error("Login failed, please try again.", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           setUsername("");
           setPassword("");
         }
       } else {
-        setError("Login failed");
+        toast.error("Login failed, please try again.", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         setUsername("");
         setPassword("");
       }
     } catch (error) {
       console.error("Error logging in:", error);
-      setError("Login failed");
+      toast.error("Login failed, please try again.", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setUsername("");
       setPassword("");
     }
@@ -255,6 +317,7 @@ const Login = () => {
           </Link>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -10,4 +10,8 @@ export default {
       display: ["focus-group"],
     },
   },
+  darkMode: "class",
+  theme: {
+    extend: {},
+  },
 };

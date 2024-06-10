@@ -16,8 +16,9 @@ const CreateProject = () => {
   const [knowledgeTransferLink, setKnowledgeTransferLink] = useState(""); // State for knowledge transfer link
   const [learningModuleLink, setLearningModuleLink] = useState(""); // State for learning module link
   const [techStack, setTechStack] = useState(""); // State for tech stack
-  const [projectId, setProjectId] = useState(""); // State for project ID
-
+  // const [projectId, setProjectId] = useState(""); // State for project ID
+  //
+  const projectId = 1;
   useEffect(() => {
     // Fetch users from backend API
     const fetchUsers = async () => {
@@ -75,13 +76,17 @@ const CreateProject = () => {
 
     try {
       // Send project data to backend
-      const response = await fetch("https://localhost:7221/projects", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(sanitizedProjectData),
-      });
+
+      const response = await fetch(
+        "https://localhost:7221/api/Project/CreateOrUpdateProject",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sanitizedProjectData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create project");
@@ -105,7 +110,7 @@ const CreateProject = () => {
     setKnowledgeTransferLink("");
     setLearningModuleLink("");
     setTechStack("");
-    setProjectId(""); // Reset projectId
+    // setProjectId(""); // Reset projectId
     setSelectedTeamMembers([]);
     setSearchTerm("");
     setSelectedUser(null);
@@ -237,7 +242,7 @@ const CreateProject = () => {
             required
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="projectid"
@@ -253,7 +258,7 @@ const CreateProject = () => {
             onChange={(e) => setProjectId(e.target.value)}
             required
           />
-        </div>
+        </div> */}
 
         {/* Project Description */}
         <div className="mb-4">

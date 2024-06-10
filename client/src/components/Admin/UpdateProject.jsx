@@ -71,7 +71,7 @@ const UpdateProject = () => {
       const response = await fetch(
         "https://localhost:7221/api/Project/UpdateProject",
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -215,7 +215,7 @@ const UpdateProject = () => {
         onSubmit={handleSubmit}
       >
         {/* Project Name */}
-        <h1 className="text-2xl font-bold mb-4">Create Project</h1>
+        <h1 className="text-2xl font-bold mb-4">Update Project</h1>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -363,7 +363,7 @@ const UpdateProject = () => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Create Project
+            Update Project
           </button>
           <button
             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

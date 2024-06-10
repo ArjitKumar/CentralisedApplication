@@ -85,10 +85,10 @@ const AdminSidebar = () => {
       <hr className="w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded" />
       <ul className="mt-3 text-white font-bold">
         <li className="mb-2 rounded hover:shadow hover:bg-blue-500 py-2 ml-3">
-          <a>
+          <Link to="/admin-dashboard">
             <FaHome className="inline-block w-6 h-6 mr-2 -mt2" />
             Dashboard
-          </a>
+          </Link>
         </li>
 
         <li className="mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
@@ -107,12 +107,12 @@ const AdminSidebar = () => {
           </Link>
         </li>
 
-        <li className="mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
+        {/* <li className="mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
           <Link to="/signup" className="px-3">
             <FaSignInAlt className="inline-block w-6 h-6 mr-2 -mt2" />
             Sign In
           </Link>
-        </li>
+        </li> */}
 
         <li className="mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
           <a href="" className="px-3">
