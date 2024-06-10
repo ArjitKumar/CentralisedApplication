@@ -11,7 +11,7 @@ const Layout = () => {
       <div className="flex-1 flex flex-col">
         <Dashboard />
         {/* <main className="flex-1 p-4 ml-64 bg-gradient-to-r from-neutral-100 to-slate-300"> */}
-        <main className="flex-1 p-4 ml-64 bg-slate-300">
+        <main className="flex-1 p-4 ml-64 bg-gradient-to-r from-gray-900 to-blue-600">
           {/* <ProjectList /> */}
           <UserProject />
           {/* Add more cards or components here */}

@@ -22,10 +22,10 @@ const Sidebar = () => {
       <hr class=" w-full h-0.5 mx-auto my-4 bg-gray-100 border-0 rounded"></hr>
       <ul className=" mt-3 text-white font-bold">
         <li className=" mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
-          <a href="" className=" px-3">
+          <Link href="/user-dashboard" className=" px-3">
             <FaHome className=" inline-block w-6 h-6 mr-2 -mt2"></FaHome>
             Dashboard
-          </a>
+          </Link>
         </li>
 
         <li className=" mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
@@ -42,12 +42,12 @@ const Sidebar = () => {
           </a>
         </li>
 
-        <li className=" mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
+        {/* <li className=" mb-2 rounded hover:shadow hover:bg-blue-500 py-2">
           <Link to="/signup" className=" px-3">
             <FaSignInAlt className=" inline-block w-6 h-6 mr-2 -mt2"></FaSignInAlt>
             Sign In
           </Link>
-        </li>
+        </li> */}
 
         <li className=" mb-2 rounded hover:shadow hover:bg-blue-500 py-2 ml-3">
           <FaSignOutAlt className=" inline-block w-6 h-6 mr-2 -mt2"></FaSignOutAlt>

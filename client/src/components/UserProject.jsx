@@ -243,14 +243,6 @@ const UserProject = () => {
     setIsModalOpen(false);
   };
 
-  const handleUpdate = (project) => {
-    // Handle update project logic here
-  };
-
-  const handleDelete = (projectId) => {
-    // Handle delete project logic here
-  };
-
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -261,20 +253,22 @@ const UserProject = () => {
 
   return (
     <div className="p-6 space-y-4">
-      <h2 className="text-2xl font-bold mb-4">My Projects :-</h2>
-      <table className="min-w-full divide-y divide-gray-200 border border-gray-300">
-        <thead className="bg-gray-200">
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+      <h2 className="text-2xl font-bold mb-4 text-white underline">
+        My Projects :-
+      </h2>
+      <table className="min-w-full divide-y divide-gray-200 border border-gray-300 border-separate border-spacing-y-0.5">
+        <thead className="bg-gray-800">
+          <tr style={{ height: 60 }}>
+            <th className="px-6 py-3 text-left text-m font-medium text-white uppercase tracking-wider">
               Project Name
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-m font-medium text-white uppercase tracking-wider">
               Project Description
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-m font-medium text-white uppercase tracking-wider">
               Tech Stack
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-m font-medium text-white uppercase tracking-wider">
               Actions
             </th>
           </tr>
@@ -283,25 +277,25 @@ const UserProject = () => {
           {projectDetails.map((project, index) => (
             <tr
               key={project.projectID}
-              className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+              className={"bg-gradient-to-r from-cyan-500 to-blue-500 ..."}
             >
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-white">
                 {project.projectName}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-6 py-4 whitespace-nowrap text-m text-white">
                 {project.projectDescription}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-6 py-4 whitespace-nowrap text-m text-white">
                 {project.techStack}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex space-x-2">
+              <td className="px-6 py-4 whitespace-nowrap text-m text-white flex justify-center">
                 <button
-                  className="py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onClick={() => openModal(project)}
                 >
                   <FaEye />
                 </button>
-                <button
+                {/* <button
                   className="py-2 px-4 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   onClick={() => handleUpdate(project)}
                 >
@@ -312,7 +306,7 @@ const UserProject = () => {
                   onClick={() => handleDelete(project.projectID)}
                 >
                   <FaTrash />
-                </button>
+                </button> */}
               </td>
             </tr>
           ))}
